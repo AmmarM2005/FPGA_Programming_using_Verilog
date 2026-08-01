@@ -1,0 +1,14 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: AM_Industries
+// Engineer: Ammar Maheshwarwala
+// Create Date: 15.04.2026 10:45:38
+// Design Name: Barrel Shift Register
+// Module Name: bsr
+// Project Name: Barrel Shift Register
+// Target Devices: Basys 3
+//////////////////////////////////////////////////////////////////////////////////
+module bsr(
+
+    );
+endmodule
