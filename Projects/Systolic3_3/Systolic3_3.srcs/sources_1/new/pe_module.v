@@ -19,5 +19,4 @@ always @(posedge clk or posedge rst) begin
         c_out <= c_out + (a_in * b_in);
     end
 end
-
 endmodule

@@ -33,11 +33,12 @@ module alu_control(
             end
 
             2'b11: begin
-                // I-TYPE ALU - use f3 only, f7 ignored
-                case (f3)
+                 case (f3)
                     3'b000: alu_c = 4'b0010;  // addi
+                    3'b001: alu_c = 4'b1000;  // slli        ← NEW
                     3'b010: alu_c = 4'b0111;  // slti
                     3'b100: alu_c = 4'b0011;  // xori
+                    3'b101: alu_c = f7 ? 4'b1010 : 4'b1001;  // srai : srli   ← NEW
                     3'b110: alu_c = 4'b0001;  // ori
                     3'b111: alu_c = 4'b0000;  // andi
                     default: alu_c = 4'b0010;
