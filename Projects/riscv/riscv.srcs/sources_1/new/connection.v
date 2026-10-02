@@ -8,7 +8,8 @@
 // ============================================================
 module cpu(
     input clk,
-    input rst
+    input rst,
+    output [31:0] probe_out  
 );
  
 // ── Wire declarations ─────────────────────────────────────────────
@@ -49,6 +50,7 @@ module cpu(
         .clk      (clk),
         .rst      (rst),
         .branch   (Branch),
+        .funct3   (inst[14:12]),
         .zero     (zero),
         .jump     (Jump),
         .jalr     (jalr),           // FIX: new
@@ -126,13 +128,10 @@ module cpu(
         .read_data  (mem_rdata)
     );
  
-// ── Write-Back MUX ────────────────────────────────────────────────
-    // FIX: ResultSrc=10 now uses pc_plus4_reg (registered capture)
-    //      not a combinational pc+4 which sees updated PC
-    // NEW
 assign write_back =
     (ResultSrc == 2'b01) ? mem_rdata    :  // LOAD
-    (ResultSrc == 2'b10) ? pc_plus4 :  // JAL/JALR
+    (ResultSrc == 2'b10) ? pc_plus4     :  // JAL/JALR
     (ResultSrc == 2'b11) ? imm          :  // LUI - direct from ImmGen
                            alu_result   ;  // R-type, I-ALU, AUIPC, STORE(unused)
+     assign probe_out = write_back;
 endmodule

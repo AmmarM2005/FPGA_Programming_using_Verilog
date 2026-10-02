@@ -1,20 +1,4 @@
 `timescale 1ns / 1ps
-// ============================================================
-// SELF-CHECKING TESTBENCH FOR SINGLE-CYCLE RV32I CPU
-// ============================================================
-// Loads a hand-assembled RV32I program directly into the
-// instruction memory (bypassing $readmemh / program.mem),
-// runs the CPU until it hits a self-loop "halt" instruction,
-// then checks register file + data memory contents against
-// expected values.
-//
-// NOTE: The DUT's `im` module tries $readmemh("program.mem",...)
-// at time 0. If that file doesn't exist in your sim directory,
-// Vivado will print a benign warning ("failed to open ... ") --
-// harmless, since this testbench overwrites the whole
-// instruction memory anyway right after time 0.
-// ============================================================
-
 module tb_cpu;
 
     // ---------------- Clock / reset ----------------
