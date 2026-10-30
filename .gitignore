@@ -1,5 +1,28 @@
+# Whitelist: publish only hand-written HDL sources and project definition
 *
 !*/
+!.gitignore
+!README*
 !*.v
 !*.sv
-!.gitignore
+!*.vh
+!*.svh
+!*.vhd
+!*.mem
+!*.coe
+!*.xdc
+!*.tcl
+!*.xci
+!*.bd
+!*.xpr
+!*.py
+# separate repo living inside this folder
+/OpenROAD Projects/
+# never publish Vivado-generated folders (overrides the directory re-include above)
+**/*.cache/
+**/*.hw/
+**/*.ip_user_files/
+**/*.sim/
+**/*.gen/
+**/*.runs/
+**/.Xil/
